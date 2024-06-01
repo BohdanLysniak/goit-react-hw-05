@@ -15,6 +15,7 @@ export default function HomePage() {
         setError(false);
         const { results } = await getMovies();
         setMovies(results);
+        console.log(results);
       } catch (error) {
         setError(true);
       } finally {
@@ -28,7 +29,7 @@ export default function HomePage() {
       <h1>Trending movies today!</h1>
       {isLoading && <Loader />}
       {error && <p>Something went wrong. Pleas reload the page</p>}
-      {movies.length > 0 && <MovieList />}
+      {movies.length > 0 && <MovieList moviesList={movies} />}
     </div>
   );
 }
