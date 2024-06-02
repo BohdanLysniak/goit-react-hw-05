@@ -14,6 +14,7 @@ export default function MovieDetailsPage() {
   useEffect(() => {
     async function fetchMovieDetails() {
       try {
+        if (!id) return;
         setError(false);
         setLoading(true);
         const dataMoviesDetails = await getMovieDetails(id);
@@ -29,9 +30,7 @@ export default function MovieDetailsPage() {
 
   console.log(movieDetails);
 
-  return (
-    { movieDetails &&
-    <section className={clsx(css.sectionMovieDetails)}>
+  return ( {movieDetails && (    <section className={clsx(css.sectionMovieDetails)}>
       <button className={clsx(css.btnGoBack)}>Go Back</button>
       <div className={clsx(css.wrapperCard)}>
         <img className={clsx(css.imageCard)} />
@@ -42,7 +41,6 @@ export default function MovieDetailsPage() {
         <h4 className={clsx(css.genres)}></h4>
         <p className={clsx(css.genrexText)}></p>
       </div>
-    </section>
-  }
+    </section>)}
   );
 }
