@@ -26,18 +26,23 @@ export default function MovieDetailsPage() {
     }
     fetchMovieDetails();
   }, [id]);
+
+  console.log(movieDetails);
+
   return (
+    { movieDetails &&
     <section className={clsx(css.sectionMovieDetails)}>
       <button className={clsx(css.btnGoBack)}>Go Back</button>
       <div className={clsx(css.wrapperCard)}>
         <img className={clsx(css.imageCard)} />
-        <h2 className={clsx(css.titleMovie)}></h2>
-        <p className={clsx(css.rateMovie)}></p>
-        <h3 className={clsx(css.overviewMovie)}></h3>
-        <p className={clsx(css.overviewText)}></p>
+        <h2 className={clsx(css.titleMovie)}>{movieDetails.title}</h2>
+        <p className={clsx(css.rateMovie)}>{movieDetails.vote_average}</p>
+        <h3 className={clsx(css.overviewMovie)}>Overview</h3>
+        <p className={clsx(css.overviewText)}>{movieDetails.overview}</p>
         <h4 className={clsx(css.genres)}></h4>
         <p className={clsx(css.genrexText)}></p>
       </div>
     </section>
+  }
   );
 }
