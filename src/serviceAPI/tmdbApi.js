@@ -21,6 +21,16 @@ export async function getMovies() {
 }
 
 export async function getMovieDetails(movieId) {
-  const response = await axios.get(`/3/movie/${movieId}`, options);
+  const response = await axios.get(`3/movie/${movieId}`, options);
   return response.data;
+}
+
+export async function getMovieCast(movieId) {
+  const response = await axios.get(`3/movie/${movieId}/credits`, options);
+  return response.data.cast;
+}
+
+export async function getMovieReviews(movieId) {
+  const response = await axios.get(`3/movie/${movieId}/reviews`, options);
+  return response.data.results;
 }
