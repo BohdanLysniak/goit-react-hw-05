@@ -1,7 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL =
-  "https://api.themoviedb.org/3/trending/movie/day?language=en-US";
+axios.defaults.baseURL = "https://api.themoviedb.org/";
 
 const options = {
   headers: {
@@ -18,5 +17,10 @@ const options = {
 
 export async function getMovies() {
   const response = await axios.get(`3/trending/movie/day`, options);
+  return response.data;
+}
+
+export async function getMovieDetails(movieId) {
+  const response = await axios.get(`/3/movie/${movieId}`, options);
   return response.data;
 }

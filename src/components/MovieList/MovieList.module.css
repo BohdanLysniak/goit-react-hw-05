@@ -1,0 +1,16 @@
+.moviesList {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 12px;
+  flex-wrap: wrap;
+}
+
+.moviesItem {
+  width: calc((100% - 40px) / 6);
+}
+
+.moviesImage {
+  width: 100%;
+}

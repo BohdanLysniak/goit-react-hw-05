@@ -5,13 +5,13 @@ import Loader from "../../components/Loader/Loader";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
-  const [isLoading, setLoadig] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     async function fetchMovies() {
       try {
-        setLoadig(true);
+        setLoading(true);
         setError(false);
         const { results } = await getMovies();
         setMovies(results);
@@ -19,7 +19,7 @@ export default function HomePage() {
       } catch (error) {
         setError(true);
       } finally {
-        setLoadig(false);
+        setLoading(false);
       }
     }
     fetchMovies();
@@ -28,7 +28,7 @@ export default function HomePage() {
     <div className="">
       <h1>Trending movies today!</h1>
       {isLoading && <Loader />}
-      {error && <p>Something went wrong. Pleas reload the page</p>}
+      {error && <p>Something went wrong. Please, reload the page</p>}
       {movies.length > 0 && <MovieList moviesList={movies} />}
     </div>
   );

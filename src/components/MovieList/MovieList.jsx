@@ -1,26 +1,35 @@
 import clsx from "clsx";
 import css from "./MovieList.module.css";
+import { Link } from "react-router-dom";
 
 export default function MovieList({ moviesList }) {
-  const defaultImg =
-    "https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg";
+  const defaultImg = "https://stock.adobe.com/ua/search?k=default";
   return (
     <ul className={clsx(css.moviesList)}>
-      {moviesList.map(({ id, title, vote_average, poster_path }) => {
-        return (
-          <li key={id}>
-            <img
-              src={
-                poster_path
-                  ? `https://image.tmdb.org/t/p/w500${poster_path}`
-                  : defaultImg
-              }
-              alt={title}
-            />
-            <h2>Rating: {vote_average}</h2>
-          </li>
-        );
-      })}
+      {moviesList.map(
+        ({ id, title, vote_average, poster_path, release_date }) => {
+          return (
+            <li className={clsx(css.moviesItem)} key={id}>
+              <Link to={`/movies/${id}`}>
+                <img
+                  className={clsx(css.moviesImage)}
+                  src={
+                    poster_path
+                      ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                      : defaultImg
+                  }
+                  alt={title}
+                />
+                <h2>Rating: {vote_average}</h2>
+                <p>
+                  Release date:<br></br>
+                  {release_date}
+                </p>
+              </Link>
+            </li>
+          );
+        }
+      )}
     </ul>
   );
 }
