@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieDetails } from "../../serviceAPI/tmdbApi";
+import Loader from "../../components/Loader/Loader";
 import css from "./MovieDetailsPage.module.css";
 
 export default function MovieDetailsPage() {
@@ -22,7 +23,7 @@ export default function MovieDetailsPage() {
       } catch (error) {
         setError(true);
       } finally {
-        setLoading(true);
+        setLoading(false);
       }
     }
     fetchMovieDetails();
@@ -30,17 +31,24 @@ export default function MovieDetailsPage() {
 
   console.log(movieDetails);
 
-  return ( {movieDetails && (    <section className={clsx(css.sectionMovieDetails)}>
-      <button className={clsx(css.btnGoBack)}>Go Back</button>
-      <div className={clsx(css.wrapperCard)}>
-        <img className={clsx(css.imageCard)} />
-        <h2 className={clsx(css.titleMovie)}>{movieDetails.title}</h2>
-        <p className={clsx(css.rateMovie)}>{movieDetails.vote_average}</p>
-        <h3 className={clsx(css.overviewMovie)}>Overview</h3>
-        <p className={clsx(css.overviewText)}>{movieDetails.overview}</p>
-        <h4 className={clsx(css.genres)}></h4>
-        <p className={clsx(css.genrexText)}></p>
-      </div>
-    </section>)}
+  return (
+    <>
+      {movieDetails && (
+        <section className={clsx(css.sectionMovieDetails)}>
+          <button className={clsx(css.btnGoBack)}>Go Back</button>
+          <div className={clsx(css.wrapperCard)}>
+            <img className={clsx(css.imageCard)} />
+            <h2 className={clsx(css.titleMovie)}>{movieDetails.title}</h2>
+            <p className={clsx(css.rateMovie)}>{movieDetails.vote_average}</p>
+            <h3 className={clsx(css.overviewMovie)}>Overview</h3>
+            <p className={clsx(css.overviewText)}>{movieDetails.overview}</p>
+            <h4 className={clsx(css.genres)}></h4>
+            <p className={clsx(css.genrexText)}></p>
+          </div>
+        </section>
+      )}
+      {isLoading && <Loader />}
+      {error && <p>Something went wrong. Please, reload the page</p>}
+    </>
   );
 }
