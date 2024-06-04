@@ -34,3 +34,8 @@ export async function getMovieReviews(movieId) {
   const response = await axios.get(`3/movie/${movieId}/reviews`, options);
   return response.data.results;
 }
+
+export async function getMoviesByQuery(query) {
+  const response = await axios.get(`3/search/movie?query=${query}`, options);
+  return response.data;
+}
