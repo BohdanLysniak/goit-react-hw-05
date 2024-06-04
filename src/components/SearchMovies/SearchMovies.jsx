@@ -1,13 +1,14 @@
 import clsx from "clsx";
 import css from "./SearchMovies.module.css";
 
-export default function SearchMovies(e) {
+export default function SearchMovies({ value, onChange, onSubmit }) {
   return (
-    <form onSubmit={} className={clsx(css.form)}>
+    <form onSubmit={onSubmit} className={clsx(css.form)}>
       <input
+        name="search"
         type="text"
         value={value}
-        onChange={onChange}
+        onChange={event => onChange(event.target.value)}
         autoComplete="off"
         autoFocus
         placeholder="Search movie..."
