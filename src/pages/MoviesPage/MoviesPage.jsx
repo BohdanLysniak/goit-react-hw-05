@@ -1,46 +1,38 @@
 import { useEffect, useState } from "react";
-// import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { getMoviesByQuery } from "../../serviceAPI/tmdbApi";
 import SearchMovies from "../../components/SearchMovies/SearchMovies";
 import MovieList from "../../components/MovieList/MovieList";
-import { useSearchParams } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const movieTitle = searchParams.get("movieTitle") && "";
+  const movieTitle = searchParams.get("movieTitle") ?? "";
 
-  const changeMovieTitle = newMovieTitle => {
+  const handleSubmit = newMovieTitle => {
     searchParams.set("movieTitle", newMovieTitle);
     setSearchParams(searchParams);
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    setMovies("");
-  };
-
-  console.log(movies);
-
   useEffect(() => {
     async function fetchMoviesByQuery() {
       try {
-        const { results } = await getMoviesByQuery(searchParams);
+        const { results } = await getMoviesByQuery(movieTitle);
         setMovies(results);
       } catch (error) {
         console.log(error);
       }
     }
     fetchMoviesByQuery();
-  }, [searchParams]);
+  }, [movieTitle]);
+
+  console.log(movieTitle);
 
   return (
     <div>
-      <SearchMovies
-        value={movieTitle}
-        onChange={changeMovieTitle}
-        onSubmit={handleSubmit}
-      />
+      <Toaster />
+      <SearchMovies onSubmit={handleSubmit} />
       {movies.length > 0 && <MovieList moviesList={movies} />}
     </div>
   );
