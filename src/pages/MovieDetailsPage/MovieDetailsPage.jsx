@@ -1,6 +1,12 @@
 import clsx from "clsx";
-import { useEffect, useState } from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useParams
+} from "react-router-dom";
 import { getMovieDetails } from "../../serviceAPI/tmdbApi";
 import Loader from "../../components/Loader/Loader";
 import css from "./MovieDetailsPage.module.css";
@@ -13,6 +19,10 @@ export default function MovieDetailsPage() {
   const defaultImg = "https://stock.adobe.com/ua/search?k=default";
 
   const { moviesId } = useParams();
+
+  const location = useLocation();
+  const backLinkRef = useRef(location.state ?? "/movies");
+  console.log(backLinkRef);
 
   useEffect(() => {
     async function fetchMovieDetails() {
@@ -31,7 +41,7 @@ export default function MovieDetailsPage() {
     fetchMovieDetails();
   }, [moviesId]);
 
-  console.log(movieDetails);
+  console.log(backLinkRef);
 
   return (
     <>
@@ -61,6 +71,8 @@ export default function MovieDetailsPage() {
       )}
       {isLoading && <Loader />}
       {error && <p>Something went wrong. Please, reload the page</p>}
+
+      <Link to={backLinkRef.current}>Go back</Link>
 
       <ul>
         <li>
