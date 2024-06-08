@@ -5,8 +5,12 @@ import { Link } from "react-router-dom";
 export default function NotFoundPage() {
   return (
     <div className={clsx(css.errorPageWrapper)}>
-      <p>
-        Page not found. Please, go to <Link to="/">Home page</Link>{" "}
+      <p className={clsx(css.text)}>
+        Page not found. Please, go to
+        <br />
+        <Link to="/" className={clsx(css.linkHome)}>
+          Home page
+        </Link>
       </p>
     </div>
   );

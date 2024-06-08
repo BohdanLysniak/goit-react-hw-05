@@ -1,7 +1,20 @@
+.header {
+  padding: 20px 40px;
+  background-color: rgba(81, 110, 54, 0.2);
+}
+.list {
+  display: flex;
+  gap: 32px;
+}
 .link {
-  color: red;
+  font-size: 26px;
+  font-weight: 500;
+  color: rgb(111, 125, 111);
+}
+.link.active {
+  color: rgb(89, 155, 89);
 }
 
-.active {
-  color: teal;
+li .link:hover {
+  color: rgb(21, 110, 82);
 }

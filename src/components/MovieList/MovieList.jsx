@@ -22,8 +22,10 @@ export default function MovieList({ moviesList }) {
                   }
                   alt={title}
                 />
-                <h2>Rating: {vote_average}</h2>
-                <p>
+                <h2 className={clsx(css.title)}>
+                  Rating: {Math.ceil(vote_average)}
+                </h2>
+                <p className={clsx(css.dateText)}>
                   Release date:<br></br>
                   {release_date}
                 </p>

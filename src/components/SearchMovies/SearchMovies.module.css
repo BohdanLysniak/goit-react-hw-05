@@ -1,0 +1,31 @@
+.form {
+  margin-left: 24px;
+  display: flex;
+  justify-content: start;
+  column-gap: 12px;
+  margin-bottom: 36px;
+}
+
+.field {
+  height: 30px;
+  width: 250px;
+  font-size: 18px;
+  padding-left: 8px;
+  outline: transparent;
+  border-radius: 8px;
+  border-color: transparent;
+}
+
+.btn {
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  font-size: 18px;
+  padding-left: 8px;
+  outline: transparent;
+  border-radius: 8px;
+  border-color: transparent;
+  font-size: 16px;
+}

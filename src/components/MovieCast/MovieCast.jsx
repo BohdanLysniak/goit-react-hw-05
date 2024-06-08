@@ -45,6 +45,7 @@ export default function MovieCast() {
                     : defaultImg
                 }
                 alt={list.name}
+                width="320"
               />
               <h4 className={clsx(css.name)}>{list.name}</h4>
               {list.character && (

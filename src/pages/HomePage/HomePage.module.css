@@ -1,0 +1,10 @@
+.homePageWrapper {
+  padding: 16px;
+}
+
+.title {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+}

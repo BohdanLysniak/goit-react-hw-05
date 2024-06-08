@@ -1,0 +1,14 @@
+.errorPageWrapper {
+  margin: 24px;
+}
+
+.text {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.linkHome {
+  color: rgb(39, 206, 98);
+}

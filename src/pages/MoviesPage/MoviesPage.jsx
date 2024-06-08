@@ -7,6 +7,8 @@ import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import Loader from "../../components/Loader/Loader";
 import { Toaster } from "react-hot-toast";
 import toast from "react-hot-toast";
+import css from "./MoviesPage.module.css";
+import clsx from "clsx";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -47,12 +49,12 @@ export default function MoviesPage() {
   }, [movieTitle]);
 
   return (
-    <div>
+    <div className={clsx(css.MoviePageWrapper)}>
       <Toaster />
-      {isLoading && <Loader />}
-      {error && <NotFoundPage />}
       <SearchMovies onSubmit={handleSubmit} />
       {movies.length > 0 && <MovieList moviesList={movies} />}
+      {isLoading && <Loader />}
+      {error && <NotFoundPage />}
     </div>
   );
 }

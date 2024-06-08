@@ -23,7 +23,6 @@ export default function MovieDetailsPage() {
 
   const location = useLocation();
   const backLinkRef = useRef(location.state ?? "/movies");
-  console.log(backLinkRef);
 
   useEffect(() => {
     async function fetchMovieDetails() {
@@ -42,13 +41,11 @@ export default function MovieDetailsPage() {
     fetchMovieDetails();
   }, [moviesId]);
 
-  console.log(backLinkRef);
-
   return (
     <>
       {movieDetails && (
         <section className={clsx(css.sectionMovieDetails)}>
-          <div className={clsx(css.wrapperCard)}>
+          <div className={clsx(css.wrapperImage)}>
             <img
               className={clsx(css.imageCard)}
               src={
@@ -57,35 +54,39 @@ export default function MovieDetailsPage() {
                   : defaultImg
               }
               alt={movieDetails.title}
+              width="320"
             />
+          </div>
+          <div className={clsx(css.description)}>
             <h2 className={clsx(css.titleMovie)}>{movieDetails.title}</h2>
             <p className={clsx(css.rateMovie)}>
               User score: {Math.floor((movieDetails.vote_average * 100) / 10)}%
             </p>
-            <h3 className={clsx(css.overviewMovie)}>Overview</h3>
+            <h3 className={clsx(css.overviewMovie)}>Overview:</h3>
             <p className={clsx(css.overviewText)}>{movieDetails.overview}</p>
             <h4 className={clsx(css.genres)}></h4>
             <p className={clsx(css.genrexText)}></p>
+
+            <ul className={clsx(css.listCastAndRewievs)}>
+              <li className={clsx(css.link)}>
+                <NavLink to="reviews">Reviews</NavLink>
+              </li>
+              <li className={clsx(css.link)}>
+                <NavLink to="cast">Cast</NavLink>
+              </li>
+              <li className={clsx(css.link)}>
+                <Link to={backLinkRef.current}>Go back</Link>
+              </li>
+            </ul>
+
+            <Suspense fallback={<Loader />}>
+              <Outlet />
+            </Suspense>
           </div>
         </section>
       )}
       {isLoading && <Loader />}
       {error && <NotFoundPage />}
-
-      <Link to={backLinkRef.current}>Go back</Link>
-
-      <ul>
-        <li>
-          <NavLink to="cast">Cast</NavLink>
-        </li>
-        <li>
-          <NavLink to="reviews">Reviews</NavLink>
-        </li>
-      </ul>
-
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
     </>
   );
 }

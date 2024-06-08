@@ -19,13 +19,16 @@ export default function SearchMovies({ onSubmit }) {
     <Formik initialValues={{ movieTitle: "" }} onSubmit={handleSearch}>
       <Form className={clsx(css.form)}>
         <Field
+          className={clsx(css.field)}
           name="movieTitle"
           type="text"
           autoComplete="off"
           autoFocus
           placeholder="Search movie..."
         />
-        <button type="submit">Search</button>
+        <button className={clsx(css.btn)} type="submit">
+          Search
+        </button>
       </Form>
     </Formik>
   );
