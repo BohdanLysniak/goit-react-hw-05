@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getMovieCast } from "../../serviceAPI/tmdbApi";
 import css from "./MovieCast.module.css";
 import Loader from "../Loader/Loader";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 
 export default function MovieCast() {
   const [cast, setCast] = useState([]);
@@ -53,7 +54,7 @@ export default function MovieCast() {
           ))}
       </ul>
       {isLoading && <Loader />}
-      {error && <p>Something went wrong. Please, reload the page</p>}
+      {error && <NotFoundPage />}
     </>
   );
 }

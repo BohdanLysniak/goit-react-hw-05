@@ -3,10 +3,10 @@ import { useSearchParams } from "react-router-dom";
 import { getMoviesByQuery } from "../../serviceAPI/tmdbApi";
 import SearchMovies from "../../components/SearchMovies/SearchMovies";
 import MovieList from "../../components/MovieList/MovieList";
-import { Toaster } from "react-hot-toast";
-import toast from "react-hot-toast";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import Loader from "../../components/Loader/Loader";
+import { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function MoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -37,9 +37,8 @@ export default function MoviesPage() {
           notifyEmpty();
         }
         setMovies(results);
-        console.log(results);
       } catch (error) {
-        console.log(error);
+        setError(true);
       } finally {
         setIsLoading(false);
       }

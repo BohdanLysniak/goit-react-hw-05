@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { getMovieDetails } from "../../serviceAPI/tmdbApi";
 import Loader from "../../components/Loader/Loader";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import css from "./MovieDetailsPage.module.css";
 
 export default function MovieDetailsPage() {
@@ -69,7 +70,7 @@ export default function MovieDetailsPage() {
         </section>
       )}
       {isLoading && <Loader />}
-      {error && <p>Something went wrong. Please, reload the page</p>}
+      {error && <NotFoundPage />}
 
       <Link to={backLinkRef.current}>Go back</Link>
 

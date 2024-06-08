@@ -4,6 +4,7 @@ import { getMovieReviews } from "../../serviceAPI/tmdbApi";
 import { useEffect, useState } from "react";
 import Loader from "../Loader/Loader";
 import css from "./MovieReviews.module.css";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 
 export default function MovieReviews() {
   const [reviews, setReviews] = useState([]);
@@ -49,7 +50,7 @@ export default function MovieReviews() {
         )}
       </ul>
       {isLoading && <Loader />}
-      {error && <p>Something went wrong. Please, reload the page</p>}
+      {error && <NotFoundPage />}
     </>
   );
 }

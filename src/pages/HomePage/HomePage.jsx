@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getMovies } from "../../serviceAPI/tmdbApi";
 import MovieList from "../../components/MovieList/MovieList";
 import Loader from "../../components/Loader/Loader";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
@@ -28,7 +29,7 @@ export default function HomePage() {
     <div className="">
       <h1>Trending movies today!</h1>
       {isLoading && <Loader />}
-      {error && <p>Something went wrong. Please, reload the page</p>}
+      {error && <NotFoundPage />}
       {movies.length > 0 && <MovieList moviesList={movies} />}
     </div>
   );
