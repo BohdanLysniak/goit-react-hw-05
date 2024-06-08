@@ -47,7 +47,6 @@ export default function MovieDetailsPage() {
     <>
       {movieDetails && (
         <section className={clsx(css.sectionMovieDetails)}>
-          <button className={clsx(css.btnGoBack)}>Go Back</button>
           <div className={clsx(css.wrapperCard)}>
             <img
               className={clsx(css.imageCard)}
