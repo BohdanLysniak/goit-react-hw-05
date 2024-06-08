@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import {
   Link,
   NavLink,
@@ -81,7 +81,10 @@ export default function MovieDetailsPage() {
           <NavLink to="reviews">Reviews</NavLink>
         </li>
       </ul>
-      <Outlet />
+
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
