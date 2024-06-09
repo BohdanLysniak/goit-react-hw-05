@@ -8,7 +8,7 @@
 
 .field {
   height: 30px;
-  width: 250px;
+  max-width: 35%;
   font-size: 18px;
   padding-left: 8px;
   outline: transparent;
@@ -21,7 +21,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
+  max-width: 100px;
   font-size: 18px;
   padding-left: 8px;
   outline: transparent;
